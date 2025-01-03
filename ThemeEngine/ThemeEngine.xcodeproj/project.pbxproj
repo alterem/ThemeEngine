@@ -10,6 +10,7 @@
 		098AE129250A8D3900BC44A1 /* TKSVGRendition+Pasteboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 098AE128250A8D3900BC44A1 /* TKSVGRendition+Pasteboard.m */; };
 		099E91212509D70C003AE113 /* CoreSVG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 099E91202509D70C003AE113 /* CoreSVG.framework */; };
 		09D0CCC12509C0D500A1DCE5 /* PDFKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09D0CCC02509C0D500A1DCE5 /* PDFKit.framework */; };
+		3FE993DC2AEAD98400FC78CC /* TKPDFRendition+Pasteboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE993DB2AEAD98400FC78CC /* TKPDFRendition+Pasteboard.m */; };
 		FA092CED1B36822D0064DBC4 /* TERenditionsController+Dragging.m in Sources */ = {isa = PBXBuildFile; fileRef = FA092CEC1B36822D0064DBC4 /* TERenditionsController+Dragging.m */; };
 		FA1E9C691B3346A40097AA41 /* TEBitmapInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1E9C681B3346A40097AA41 /* TEBitmapInspector.m */; };
 		FA21F87D1B2E95710094202A /* TKRendition+Filtering.m in Sources */ = {isa = PBXBuildFile; fileRef = FA21F87C1B2E95710094202A /* TKRendition+Filtering.m */; };
@@ -99,6 +100,8 @@
 		099E91202509D70C003AE113 /* CoreSVG.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreSVG.framework; path = ../../../../../../System/Library/PrivateFrameworks/CoreSVG.framework; sourceTree = "<group>"; };
 		09D0CCC02509C0D500A1DCE5 /* PDFKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PDFKit.framework; path = System/Library/Frameworks/PDFKit.framework; sourceTree = SDKROOT; };
 		09FF665E2504860E0018AB6B /* ThemeEngine.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ThemeEngine.entitlements; sourceTree = "<group>"; };
+		3FE993DB2AEAD98400FC78CC /* TKPDFRendition+Pasteboard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "TKPDFRendition+Pasteboard.m"; path = "Pasteboard/TKPDFRendition+Pasteboard.m"; sourceTree = "<group>"; };
+		3FE993DD2AEAD9A400FC78CC /* TKPDFRendition+Pasteboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "TKPDFRendition+Pasteboard.h"; path = "Pasteboard/TKPDFRendition+Pasteboard.h"; sourceTree = "<group>"; };
 		FA092CEB1B36822D0064DBC4 /* TERenditionsController+Dragging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TERenditionsController+Dragging.h"; path = "Controllers/TERenditionsController+Dragging.h"; sourceTree = "<group>"; };
 		FA092CEC1B36822D0064DBC4 /* TERenditionsController+Dragging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TERenditionsController+Dragging.m"; path = "Controllers/TERenditionsController+Dragging.m"; sourceTree = "<group>"; };
 		FA1E9C671B3346A40097AA41 /* TEBitmapInspector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TEBitmapInspector.h; path = Controllers/Inspectors/TEBitmapInspector.h; sourceTree = "<group>"; };
@@ -278,6 +281,8 @@
 				FAB6EB811B375AAA00D914F4 /* TKRawDataRendition+Pasteboard.m */,
 				098AE127250A8D3900BC44A1 /* TKSVGRendition+Pasteboard.h */,
 				098AE128250A8D3900BC44A1 /* TKSVGRendition+Pasteboard.m */,
+				3FE993DD2AEAD9A400FC78CC /* TKPDFRendition+Pasteboard.h */,
+				3FE993DB2AEAD98400FC78CC /* TKPDFRendition+Pasteboard.m */,
 				FAC2D3761B37B3FE0015BF7F /* TKEffectPreset+Pasteboard.h */,
 				FAC2D3771B37B3FE0015BF7F /* TKEffectPreset+Pasteboard.m */,
 				FAC2D3791B37B8840015BF7F /* NSColor+Pasteboard.h */,
@@ -580,6 +585,7 @@
 				FACD44CC1B33A58900E75650 /* TEAnimationInspector.m in Sources */,
 				FAC2D37B1B37B8840015BF7F /* NSColor+Pasteboard.m in Sources */,
 				FAA54F751B2E4DB700EA15F2 /* TEElementsController.m in Sources */,
+				3FE993DC2AEAD98400FC78CC /* TKPDFRendition+Pasteboard.m in Sources */,
 				FABC940B1B41D418008B98AE /* NSAppleScript+Functions.m in Sources */,
 				FA606C111B2C1D2100F24960 /* main.m in Sources */,
 				FACD44CF1B33B08C00E75650 /* TEEffectsInspector.m in Sources */,
@@ -765,7 +771,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 115;
+				CURRENT_PROJECT_VERSION = 119;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = G9T88PYL48;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -804,7 +810,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 115;
+				CURRENT_PROJECT_VERSION = 119;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = G9T88PYL48;
 				ENABLE_HARDENED_RUNTIME = YES;

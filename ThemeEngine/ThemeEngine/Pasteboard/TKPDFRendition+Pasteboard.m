@@ -1,15 +1,15 @@
 //
-//  TKSVGRendition+Pasteboard.m
+//  TKPDFRendition+Pasteboard.m
 //  ThemeEngine
 //
-//  Created by Jeremy on 9/10/20.
-//  Copyright © 2020 Alex Zielenski. All rights reserved.
+//  Created by Jeremy on 10/26/23.
+//  Copyright © 2023 Alex Zielenski. All rights reserved.
 //
 
-#import "TKSVGRendition+Pasteboard.h"
-NSString *const TESVGPasteboardType = @"com.alexzielenski.themekit.rendition.svg";
+#import "TKPDFRendition+Pasteboard.h"
+NSString *const TEPDFPasteboardType = @"com.alexzielenski.themekit.rendition.pdf";
 
-@implementation TKSVGRendition (Pasteboard)
+@implementation TKPDFRendition (Pasteboard)
 - (NSArray *)writableTypesForPasteboard:(NSPasteboard *)pasteboard {
     
     return [[super writableTypesForPasteboard:pasteboard] arrayByAddingObjectsFromArray:
@@ -31,7 +31,7 @@ NSString *const TESVGPasteboardType = @"com.alexzielenski.themekit.rendition.svg
 }
 
 - (id)pasteboardPropertyListForType:(nonnull NSString *)type {
-    if ([type isEqualToString:self.mainDataType] || [type isEqualToString:TESVGPasteboardType]) {
+    if ([type isEqualToString:self.mainDataType] || [type isEqualToString:TEPDFPasteboardType]) {
         return self.rawData;
     }
     
@@ -39,18 +39,15 @@ NSString *const TESVGPasteboardType = @"com.alexzielenski.themekit.rendition.svg
 }
 
 - (BOOL)readFromPasteboardItem:(NSPasteboardItem *)item {
-    NSString *available = [item availableTypeFromArray:@[ TESVGPasteboardType, self.mainDataType, (__bridge NSString *)kUTTypeURL, (__bridge NSString *)kUTTypeFileURL ]];
-    if (available != nil) {
-        NSData *data = NULL;
-        if ([available isEqualToString:(__bridge NSString *)kUTTypeURL] ||
-                   [available isEqualToString:(__bridge NSString *)kUTTypeFileURL]) {
-
-            NSString *str = [item stringForType:available];
-            NSURL *fileURL = [NSURL URLWithString:str];
-            if(![fileURL.pathExtension.lowercaseString isEqualToString:@"svg"])
-                return NO;
-            
-            data = [NSData dataWithContentsOfURL:[NSURL URLWithString:str]];
+    NSString *type = [item availableTypeFromArray:@[ TEPDFPasteboardType, self.mainDataType, (__bridge NSString *)kUTTypeURL, (__bridge NSString *)kUTTypeFileURL ]];
+    if (!type) return NO;
+    
+    NSData *data = NULL;
+    if (IS(kUTTypeURL) || IS(kUTTypeFileURL)) {
+        NSURL *fileURL = [NSURL URLWithString:[item stringForType:type]];
+        NSString *typeOfFile = [[NSWorkspace sharedWorkspace] typeOfFile:fileURL.path error:nil];
+        if ([typeOfFile isEqualToString:self.mainDataType]) {
+            data = [NSData dataWithContentsOfURL:fileURL];
             if (data) {
                 self.rawData = data;
                 return YES;
@@ -62,7 +59,7 @@ NSString *const TESVGPasteboardType = @"com.alexzielenski.themekit.rendition.svg
 }
 
 + (NSString *)pasteboardType {
-    return TESVGPasteboardType;
+    return TEPDFPasteboardType;
 }
 
 @end

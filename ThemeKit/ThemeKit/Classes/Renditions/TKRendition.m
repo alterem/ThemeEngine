@@ -54,7 +54,8 @@ static const void *TKRenditionChangeContext = &TKRenditionChangeContext;
 
 + (Class)renditionClassForCoreUIRendition:(CUIThemeRendition *)rendition {
     if ([rendition isKindOfClass:TKClass(_CUIExternalLinkRendition)] ||
-        [rendition isKindOfClass:TKClass(_CUIInternalLinkRendition)]) {
+        [rendition isKindOfClass:TKClass(_CUIInternalLinkRendition)] ||
+        [rendition isKindOfClass:TKClass(_CUIThemePixelRendition)]) {
         return [TKBitmapRendition class];
     } else if ([rendition isKindOfClass:TKClass(_CUIThemeMultisizeImageSetRendition)]) {
         return NULL;
@@ -67,8 +68,7 @@ static const void *TKRenditionChangeContext = &TKRenditionChangeContext;
         return [TKPDFRendition class];
     } else if ([rendition isKindOfClass:TKClass(_CUIRawDataRendition)]) {
         return [TKRawDataRendition class];
-    } else if ([rendition isKindOfClass:TKClass(_CUIRawPixelRendition)] ||
-               [rendition isKindOfClass:TKClass(_CUIThemePixelRendition)]) {
+    } else if ([rendition isKindOfClass:TKClass(_CUIRawPixelRendition)]) {
         return [TKRawPixelRendition class];
     } else if ([rendition isKindOfClass:TKClass(_CUIThemeSVGRendition)]) {
         return [TKSVGRendition class];

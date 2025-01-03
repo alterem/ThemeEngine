@@ -19,8 +19,7 @@
     [indices enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL * __nonnull stop) {
         // mod them so we can just keep repeating the same pb in order
         NSUInteger itemIndex = idx % count;
-        TKRendition <TERenditionPasteboardItem> *rendition =
-        [self.renditionsArrayController.arrangedObjects objectAtIndex:idx];
+        TKRendition <TERenditionPasteboardItem> *rendition = [self.renditionsArrayController.arrangedObjects objectAtIndex:idx];
         success &= [rendition readFromPasteboardItem:items[itemIndex]];
         *stop = !success;
     }];
